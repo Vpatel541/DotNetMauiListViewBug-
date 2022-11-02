@@ -1,4 +1,5 @@
 ﻿using ListViewBug.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ListViewBug;
 
@@ -28,6 +29,34 @@ public partial class MainPage : ContentPage
 
 		testListView.ItemsSource = null;
 		testListView.ItemsSource = listContent;
+
+		Anothertest();
+    }
+
+	public void Anothertest()
+	{
+        var OBJECT1 = new ListViewTextClass()
+        {
+            text1 = "This is a test on",
+            text2 = "Dot NET MAUI"
+        };
+
+        var OBJECT2 = new ListViewTextClass()
+        {
+            text1 = "test",
+            text2 = "2"
+        };
+
+        var listContent = new List<ListViewTextClass>();
+        listContent.Add(OBJECT1);
+        listContent.Add(OBJECT2);
+
+		Dispatcher.Dispatch(() =>
+		{
+            testListView.ItemsSource = null;
+            testListView.ItemsSource = listContent;
+        });
+
     }
 
 	private void OnCounterClicked(object sender, EventArgs e)
